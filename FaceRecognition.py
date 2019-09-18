@@ -1,12 +1,12 @@
 import cv2
 import numpy as np
 
-face_Classifier = cv2.CascadeClassifier('C:/Users/PARVE/PycharmProjects/FaceRecognition/venv/Lib/site-packages/cv2/data/haarcascade_frontalcatface.xml')
+face_Classifier = cv2.CascadeClassifier('C:/Users/PARVE/PycharmProjects/FaceRecognition/venv/Lib/site-packages/cv2/data/haarcascade_frontalface_alt2.xml')
 
 def face_extroctor(img):
 
         gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
-        faces = face_Classifier.detectMultiScale(gray,1.3,5)
+        faces = face_Classifier.detectMultiScale(gray, 1.3, 6)
 
         if faces is ():
             return None
@@ -24,7 +24,7 @@ while True :
     ret, frame = cap.read()
     if face_extroctor(frame) is not None :
         count += 1
-        face = cv2.resize(face_extroctor(frame), (300, 300))
+        face = cv2.resize(face_extroctor(frame), (200, 200))
         face = cv2.cvtColor(face,cv2.COLOR_BGR2GRAY)
 
 

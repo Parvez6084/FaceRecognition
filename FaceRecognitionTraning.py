@@ -20,11 +20,11 @@ model.train(np.asarray(Training_Data), np.asarray(Labels))
 print("Model training completed!!!")
 
 
-face_Classifier = cv2.CascadeClassifier('C:/Users/PARVE/PycharmProjects/FaceRecognition/venv/Lib/site-packages/cv2/data/haarcascade_frontalcatface.xml')
+face_Classifier = cv2.CascadeClassifier('C:/Users/PARVE/PycharmProjects/FaceRecognition/venv/Lib/site-packages/cv2/data/haarcascade_frontalface_alt2.xml')
 
 def face_detector(img, size = 0.5):
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    faces = face_Classifier.detectMultiScale(gray, 1.3, 5)
+    faces = face_Classifier.detectMultiScale(gray, 1.3, 6)
 
     if faces is():
         return img,[]
@@ -52,7 +52,7 @@ while True:
             display_string = str(confidence) + "% Confidence it is user"
         cv2.putText(image, display_string, (100, 120), cv2.FONT_HERSHEY_COMPLEX, 1, (250, 120, 255))
 
-        if confidence > 75:
+        if confidence > 85:
             cv2.putText(image, "Unlocked", (250, 450), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 255, 0))
             cv2.imshow('Face Cropper', image)
 
